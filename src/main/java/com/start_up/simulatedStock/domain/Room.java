@@ -11,7 +11,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString(exclude = "writer")
 
 public class Room {
     @Id

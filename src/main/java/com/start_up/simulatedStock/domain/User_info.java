@@ -10,23 +10,18 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 
-public class User {
+public class User_info {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    @Column(name = "user_info_id")
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private int seed_money;
 
     @Column(nullable = false)
-    private UserType type;
+    private float total_lost_gain;
 
-    @ManyToOne
-    @JoinColumn(name="room_id")
-    private Room room;
-
-    @OneToOne
-    @JoinColumn(name = "locker_id")
-    private User_info info;
+    @OneToOne(mappedBy = "info")
+    private User user;
 }
