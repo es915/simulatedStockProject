@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+header {
+    width: 100;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header > h2 {
+	margin-left:20px;
+}
+
+
+
+section{
+  text-align: center;
+  margin-top: 200px;
+}
+
+
+
+
+
+
+
+
+.div3{
+    margin-top: 30px;
+    float: left;
+    background-color: deeppink;
+    width: 300px;
+    height: 200px;
+    margin-left: 450px;
+    padding-top: 40px;
+    border-radius: 40px 40px 40px 40px;
+}
+
+.div4{
+    margin-top: 30px;
+    float: right;
+    background-color: blueviolet;
+    width: 300px;
+    height: 200px;
+    margin-right: 450px;
+    padding-top: 40px;
+    border-radius: 40px 40px 40px 40px;
+}
