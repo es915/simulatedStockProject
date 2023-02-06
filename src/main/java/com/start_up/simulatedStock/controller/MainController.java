@@ -11,4 +11,9 @@ public class MainController {
         return "main";
     }
 
+    @GetMapping("/custom")
+    public String customPage() {
+        return "custom";
+    }
+
 }

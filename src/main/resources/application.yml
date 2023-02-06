@@ -1,6 +1,6 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/simulatedStock?serverTimezone=Asia/Seoul
-    username: root
-    password: qwer1234
+    url: jdbc:mysql://172.30.1.66:3306/simulated_stock?serverTimezone=Asia/Seoul
+    username: stock
+    password: localhost8080
