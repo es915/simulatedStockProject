@@ -24,5 +24,6 @@ public class User {
     private UserType type;
 
     @ManyToOne
-    private Room room_id;
+    @JoinColumn(name="room_id")
+    private Room room;
 }

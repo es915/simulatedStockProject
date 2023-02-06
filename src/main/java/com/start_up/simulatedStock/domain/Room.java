@@ -3,6 +3,8 @@ package com.start_up.simulatedStock.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "room")
@@ -24,12 +26,15 @@ public class Room {
     private String qr_code;
 
     @Column(nullable = false)
-    private Integer round_2;
+    private int round;
 
     @Column(nullable = false)
-    private Integer time;
+    private int time;
 
     @Column(nullable = false)
-    private Integer seed;
+    private int seed;
+
+    @OneToMany(mappedBy = "room")
+    private List<User> users = new ArrayList<>();
 
 }
