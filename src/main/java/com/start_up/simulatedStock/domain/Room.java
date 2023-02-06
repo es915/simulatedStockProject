@@ -5,24 +5,31 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
+@Table(name = "room")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @ToString(exclude = "writer")
 
-public class User {
+public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    @Column(name = "room_id")
     private Long id;
-
-    @Column(nullable = false)
-    private String name;
 
     @Column(nullable = false)
     private UserType type;
 
-    @ManyToOne
-    private Room room_id;
+    @Column(nullable = false)
+    private String qr_code;
+
+    @Column(nullable = false)
+    private Integer round_2;
+
+    @Column(nullable = false)
+    private Integer time;
+
+    @Column(nullable = false)
+    private Integer seed;
+
 }
