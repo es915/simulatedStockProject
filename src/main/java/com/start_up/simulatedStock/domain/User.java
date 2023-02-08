@@ -9,6 +9,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Setter
 
 public class User {
     @Id
@@ -29,4 +30,17 @@ public class User {
     @OneToOne
     @JoinColumn(name = "locker_id")
     private User_info info;
+
+    public void setRoom(Room room){
+        if(this.room != null){
+            this.room.getUsers().remove(this);
+        }
+        this.room = room;
+        room.getUsers().add(this);
+    }
+
+    public void setInfo(User_info info){
+        this.info = info;
+        info.setUser().add(this);
+    }
 }

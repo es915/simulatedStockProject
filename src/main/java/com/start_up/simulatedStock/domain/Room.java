@@ -36,4 +36,11 @@ public class Room {
     @OneToMany(mappedBy = "room")
     private List<User> users = new ArrayList<>();
 
+    public void addUser(User user){
+        this.users.add(user);
+        if(user.getRoom() != this){
+            user.setRoom(this);
+        }
+    }
+
 }
