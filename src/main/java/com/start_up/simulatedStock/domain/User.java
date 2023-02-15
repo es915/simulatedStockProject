@@ -29,4 +29,13 @@ public class User {
     @OneToOne
     @JoinColumn(name = "locker_id")
     private User_info info;
+
+    public void setRoom(Room room){
+        if(this.room != null){
+            this.room.getUsers().remove(this);
+        }
+        this.room = room;
+        room.getUsers().add(this);
+    }
+
 }
