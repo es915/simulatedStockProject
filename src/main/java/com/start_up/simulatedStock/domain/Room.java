@@ -54,8 +54,28 @@ public class Room {
     }
 
 
-    public void timeSet() {
+    public void timeSet(int sign) {
+        if (sign==0) {
+            this.timeLimit += 30;
+        } else {
+            this.timeLimit -= 30;
+        }
+    }
 
+    public void roundSet(int sign) {
+        if (sign==0) {
+            this.timeLimit += 1;
+        } else {
+            this.timeLimit -= 1;
+        }
+    }
+
+    public void seedSet(int sign) {
+        if (sign==0) {
+            this.timeLimit += 500000;
+        } else {
+            this.timeLimit -= 500000;
+        }
     }
 
 

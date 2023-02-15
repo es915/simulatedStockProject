@@ -26,13 +26,35 @@ public class RoomService {
     }
 
     // 방 설정
-    public void roundSetting(Long id, int bitSign) { // 0 : plus, 1 : minus
+    // 제한시간 설정
+    public void timeSetting(Long id, int bitSign) { // 0 : plus, 1 : minus
         Room room = roomCheck(id);
-        if (bitSign==0) {
-
+        if (bitSign==0 || bitSign==1) {
+            room.timeSet(bitSign);
+        } else {
+            throw new IllegalStateException("잘못된 부호 비트 입력");
         }
     }
 
+    // 라운드 설정
+    public void roundSetting(Long id, int bitSign) { // 0 : plus, 1 : minus
+        Room room = roomCheck(id);
+        if (bitSign==0 || bitSign==1) {
+            room.roundSet(bitSign);
+        } else {
+            throw new IllegalStateException("잘못된 부호 비트 입력");
+        }
+    }
+
+    // 시드머니 설정
+    public void seedSetting(Long id, int bitSign) { // 0 : plus, 1 : minus
+        Room room = roomCheck(id);
+        if (bitSign==0 || bitSign==1) {
+            room.roundSet(bitSign);
+        } else {
+            throw new IllegalStateException("잘못된 부호 비트 입력");
+        }
+    }
 
 
     // 참여자 리스트
@@ -40,18 +62,18 @@ public class RoomService {
 
     // findById 예외 처리
     private Room roomCheck(Long id) {
-        if (roomRepository.findById(id).isPresent()) {
+        if (roomRepository.findById(id).isPresent()) { // 객체가 있으면 객체를 가져옴
             return roomRepository.findById(id).get();
         } else {
-            throw new IllegalStateException("존재하지 않는 객체 id 값");
+            throw new IllegalStateException("존재하지 않는 객체 id 값"); // 없으면 예외 발생
         }
     }
 
-    // 랜덤 코드 뽑기 중복 체크
+    // 랜덤 코드 뽑기
     private String makeRandomCode() {
         String code = getRandomStr(6);
         if (roomRepository.findByQrCode(code).isPresent()) {
-            makeRandomCode();
+            makeRandomCode(); // DB에 qrcode 가 같은 방이 있을 경우 재귀 함수로 다시 뽑음
         } else {
             return code;
         }
