@@ -19,10 +19,7 @@ public class Room {
     private Long id;
 
     @Column(nullable = false)
-    private UserType type;
-
-    @Column(nullable = false)
-    private String qr_code;
+    private String qrCode;
 
     @Column(nullable = false)
     private int round;
@@ -42,5 +39,27 @@ public class Room {
             user.setRoom(this);
         }
     }
+    
+    // 생성 메서드
+    public static Room create(String qrCode) {
+        // QR_code 제외 기본값
+        return new Room(qrCode, 5, 180, 1000000);
+    }
+
+    private Room(String qrCode, int round, int time, int seed) {
+        this.qrCode = qrCode;
+        this.round = round;
+        this.time = time;
+        this.seed = seed;
+    }
+
+
+    public void timeSet() {
+
+    }
+
+
+
+
 
 }
