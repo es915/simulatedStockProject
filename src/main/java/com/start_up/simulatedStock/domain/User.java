@@ -17,18 +17,18 @@ public class User {
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String nickname;
 
     @Column(nullable = false)
-    private UserType type;
+    private UserState userState;
 
     @ManyToOne
     @JoinColumn(name="room_id")
     private Room room;
 
     @OneToOne
-    @JoinColumn(name = "locker_id")
-    private User_info info;
+    @JoinColumn(name = "user_info_id")
+    private UserInfo userInfo;
 
     public void setRoom(Room room){
         if(this.room != null){

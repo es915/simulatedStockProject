@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 @Entity
-@Table(name = "stock")
+@Table(name = "stocks")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -19,14 +19,14 @@ public class Stock {
     private Long id;
 
     @Column(nullable = false)
-    private String stock_name;
+    private String stockName;
 
     @OneToMany(mappedBy = "stock")
-    private List<User_stock> user_stock = new ArrayList<>();
+    private List<UserStock> userStocks = new ArrayList<>();
 
     @OneToMany(mappedBy = "stock")
-    private List<Round_stock> round_stock = new ArrayList<>();
+    private List<RoundStock> roundStocks = new ArrayList<>();
 
     @OneToMany(mappedBy = "stock")
-    private List<Info> info = new ArrayList<>();
+    private List<StockInfo> stockInfo = new ArrayList<>();
 }

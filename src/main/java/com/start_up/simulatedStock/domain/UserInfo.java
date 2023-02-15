@@ -7,29 +7,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "user")
+@Table(name = "user_info")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-
-public class User_info {
+public class UserInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_info_id")
     private Long id;
 
     @Column(nullable = false)
-    private int user_stock_id;
+    private int seedMoney;
 
     @Column(nullable = false)
-    private int seed_money;
+    private float totalLostGain;
 
-    @Column(nullable = false)
-    private float total_lost_gain;
+    @OneToMany(mappedBy = "userInfo")
+    private List<UserStock> userStocks = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user_info")
-    private List<User_stock> user_stock = new ArrayList<>();
-
-    @OneToOne(mappedBy = "info")
+    @OneToOne(mappedBy = "userInfo")
     private User user;
 }

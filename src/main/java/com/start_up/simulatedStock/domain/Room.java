@@ -25,7 +25,7 @@ public class Room {
     private int round;
 
     @Column(nullable = false)
-    private int time;
+    private int timeLimit;
 
     @Column(nullable = false)
     private int seed;
@@ -46,10 +46,10 @@ public class Room {
         return new Room(qrCode, 5, 180, 1000000);
     }
 
-    private Room(String qrCode, int round, int time, int seed) {
+    private Room(String qrCode, int round, int timeLimit, int seed) {
         this.qrCode = qrCode;
         this.round = round;
-        this.time = time;
+        this.timeLimit = timeLimit;
         this.seed = seed;
     }
 

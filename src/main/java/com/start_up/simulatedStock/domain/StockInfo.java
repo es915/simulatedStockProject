@@ -7,29 +7,23 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "round_stock")
+@Table(name = "stock_info")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class Round_stock {
+public class StockInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "round_1_id")
+    @Column(name = "stock_info_id")
     private Long id;
 
     @Column(nullable = false)
-    private int round_num;
+    private StockState stockState;
 
     @Column(nullable = false)
-    private int price;
+    private String description;
 
-    @Column(nullable = false)
-    private int stock_id;
-
-    @Column(nullable = false)
-    private int up_down;
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="stock_id")
     private Stock stock;
 }

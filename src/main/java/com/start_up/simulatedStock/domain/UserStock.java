@@ -5,25 +5,28 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-
 @Entity
-@Table(name = "room")
+@Table(name = "user_stock")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class Info {
+public class UserStock {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "info_id")
+    @Column(name = "user_stock_id")
     private Long id;
 
     @Column(nullable = false)
-    private UserType type;
+    private int totalPrice;
 
     @Column(nullable = false)
-    private String body;
+    private float lostGain;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="stock_id")
     private Stock stock;
+
+    @ManyToOne
+    @JoinColumn(name="user_info_id")
+    private UserInfo userInfo;
 }
