@@ -9,7 +9,6 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@Setter
 
 public class User {
     @Id
@@ -39,8 +38,4 @@ public class User {
         room.getUsers().add(this);
     }
 
-    public void setInfo(User_info info){
-        this.info = info;
-        info.setUser().add(this);
-    }
 }
