@@ -32,11 +32,11 @@ public class UserService {
     }
 
     // 전체 회원 조회
-    public List<User> findMembers(){
+    public List<User> findUsers(){
         return userRepository.findAll();
     }
 
-    public Optional<User> findOne(Long memberId){
-        return userRepository.findById(memberId);
+    public Optional<User> findOne(Long userId){
+        return userRepository.findById(userId);
     }
 }
