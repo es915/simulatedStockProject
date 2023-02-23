@@ -11,13 +11,12 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("/offline")
-    public String customPage(Module module) {
-
-
-
-        return "customplay";
-    }
-
+//    @GetMapping("/offline")
+//    public String customPage(Module module) {
+//
+//
+//
+//        return "customplay";
+//    }
 
 }
