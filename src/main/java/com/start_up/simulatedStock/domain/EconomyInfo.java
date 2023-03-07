@@ -7,23 +7,24 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "stock_info")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class StockInfo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "stock_info_id")
+public class EconomyInfo extends BaseTime {
+
+    // 종목별 인포메이션
+
+    @Id @GeneratedValue
+    @Column(name = "economy_info_id")
     private Long id;
 
     @Column(nullable = false)
-    private StockState stockState;
+    private EconomyInfoState economyInfoState; // 호재, 악재
 
     @Column(nullable = false)
-    private String description;
+    private String description; // 정보의 내용
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="stock_id")
-    private Stock stock;
+    private Stock stock; // 연결된 종목
 }

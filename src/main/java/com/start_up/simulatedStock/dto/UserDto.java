@@ -1,4 +1,4 @@
-package com.start_up.simulatedStock.domain;
+package com.start_up.simulatedStock.dto;
 
 import lombok.Getter;
 import lombok.Setter;

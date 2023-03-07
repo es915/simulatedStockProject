@@ -1,5 +1,5 @@
 package com.start_up.simulatedStock.domain;
 
-public enum StockState {
+public enum EconomyInfoState {
     UP, DOWN;
 }

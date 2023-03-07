@@ -5,28 +5,27 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
 @Entity
-@Table(name = "user_stock")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class UserStock {
+public class StockDetail extends BaseTime {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_stock_id")
+    @GeneratedValue
+    @Column(name = "stock_detail_id")
     private Long id;
 
     @Column(nullable = false)
-    private int totalPrice;
+    private int roundNumber;
 
     @Column(nullable = false)
-    private float lostGain;
+    private int price;
+
+    @Column(nullable = false)
+    private int upDown;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="stock_id")
     private Stock stock;
-
-    @ManyToOne
-    @JoinColumn(name="user_info_id")
-    private UserInfo userInfo;
 }
