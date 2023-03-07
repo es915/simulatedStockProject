@@ -30,4 +30,34 @@ public class Room extends BaseTime {
     @OneToMany(mappedBy = "room")
     private List<Player> playerList = new ArrayList<>(); // 게임방의 참여자
 
+    // 생성 메서드
+    public static Room createRoom(String secretCode) {
+        return new Room(secretCode);
+    }
+
+    private Room(String secretCode) {
+        this.secretCode = secretCode;
+        this.roundNumber = 5;
+        this.timeLimit = 300;
+        this.seedMoney = 1000000;
+    }
+
+
+    // 옵션 변경
+    public void changeOption(char optionType, int operator) {
+        if (operator == 1 || operator == -1) {
+            if (optionType == 't') {
+                this.timeLimit += operator*30;
+            } else if(optionType == 'r') {
+                this.roundNumber += operator;
+            } else if (optionType == 's') {
+                this.seedMoney += operator*500000;
+            } else {
+                throw new IllegalStateException("optionType 이 잘못 입력되었습니다.");
+            }
+        } else {
+            throw new IllegalStateException("operator 가 잘못 입력되었습니다.");
+        }
+
+    }
 }
