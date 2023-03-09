@@ -36,7 +36,7 @@ public class RoomService {
 
     // 게임방에 참여한 유저 리스트
     public List<PlayerDto> playerDtoList(Long id) {
-        Room room = roomRepository.findById(id).get();
+        Room room = findRoom(id);
         List<PlayerDto> playerDtoList = new ArrayList<>();
         for (Player player : room.getPlayerList()) {
             playerDtoList.add(PlayerDto.toBoardDTO(player));
@@ -69,6 +69,15 @@ public class RoomService {
         return secretCode;
     }
 
+    // 게임방 찾는 메소드
+    private Room findRoom(Long id) {
+        Optional<Room> room = roomRepository.findById(id);
+        if(room.isPresent()) {
+            return room.get();
+        } else {
+            throw new IllegalStateException("게임방이 존재하지 않음.");
+        }
+    }
 
 
 }

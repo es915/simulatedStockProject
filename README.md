@@ -12,3 +12,17 @@
 # Enum
 - PlayerState : Host or Participate
 - EconomyInfoState : 호재 or 악재
+
+# 기능
+### main 화면
+- menu 화면으로 이동
+### menu 화면  
+- 방 생성하기 버튼 -> 닉네임 입력 후 플레이어 생성, 방 생성
+- 방 참여하기 버튼 -> 닉네임 입력과 방 코드 입력 후 플레이어 생성, 방 참여
+### gameRoom 화면
+- 공통기능 게임 설정 조회, 게임 참여자 리스트 조회(playerDto 로 목록 변환)
+- 게임 시작 버튼 클릭시 각 유저별 PlayerInfo, PlayerStock 엔티티 생성
+- HOST 일때 게임 설정 버튼 투명화 해제, 게임 시작 버튼 투명화 해제
+- 게임 설정 (라운드, 제한시간, 시드머니) 수정 가능
+- HOST 일떄, 게임을 나가면 게임방이 폭파됨
+- PARTICIPATE 일때, 게임을 나가면 정상적으로 나가짐
