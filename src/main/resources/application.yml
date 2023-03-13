@@ -3,7 +3,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/simulated_stock?serverTimezeon=Asia/Seoul&characterEncoding=UTF-8
-    username: user
+    username: investor
     password:
   thymeleaf:
     cache: false
@@ -14,4 +14,4 @@ spring:
     open-in-view: false
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
