@@ -26,3 +26,15 @@
 - 게임 설정 (라운드, 제한시간, 시드머니) 수정 가능
 - HOST 일떄, 게임을 나가면 게임방이 폭파됨
 - PARTICIPATE 일때, 게임을 나가면 정상적으로 나가짐
+
+# 로컬DB 연결 방법
+- https://gyuwon95.tistory.com/167 링크 접속
+- 스키마 추가에서  이름을 simulated_stock 로 하고, Charset을 UTF-8로 맞춘다 Collation은 default로 남김
+- Users and Privileges 옵션에서 user add account 버튼 클릭
+- user name 을 investor 이라고 설정하고 비밀번호는 공백으로 남긴다
+- Mysql Connection 이름도 simulated_stock 으로 설정한다
+
+
+```SQL
+
+```
