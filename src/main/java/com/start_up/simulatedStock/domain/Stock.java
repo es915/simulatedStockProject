@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 public class Stock extends BaseTime {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "stock_id")
     private Long id;
 
