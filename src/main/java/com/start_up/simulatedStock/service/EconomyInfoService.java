@@ -8,5 +8,5 @@ import org.springframework.transaction.annotation.Transactional;
 public class EconomyInfoService {
 
     // test
-
+    // one more test
 }
