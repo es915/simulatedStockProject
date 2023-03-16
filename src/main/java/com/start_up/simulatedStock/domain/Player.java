@@ -29,4 +29,11 @@ public class Player extends BaseTime{
     @OneToOne
     @JoinColumn(name = "player_info_id")
     private PlayerInfo playerInfo; // 유저의 정보 - 자산가치, 보유 주식, 손익률
+
+
+    // 편의 메소드
+    public void setPlayerInfo(PlayerInfo playerInfo) {
+        this.playerInfo = playerInfo;
+        playerInfo.setPlayer(this);
+    }
 }

@@ -28,4 +28,18 @@ public class PlayerInfo extends BaseTime{
 
     @OneToOne(mappedBy = "playerInfo", fetch = FetchType.LAZY)
     private Player player; // 이 정보의 플레이어
+
+    public static PlayerInfo createPlayerInfo(Player player) {
+        return new PlayerInfo(player);
+    }
+
+    // 생성자
+    private PlayerInfo(Player player) {
+        this.player = player;
+    }
+
+    // 편의 메소드를 위한 세터문
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 }
