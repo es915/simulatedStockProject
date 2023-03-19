@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Getter
 public class StockDetail extends BaseTime {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "stock_detail_id")
     private Long id;
 

@@ -11,7 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 public class Room extends BaseTime {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "room_id")
     private Long id;
 
