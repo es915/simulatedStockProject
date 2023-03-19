@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Getter
 public class Player extends BaseTime{
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "player_id")
     private Long id;
 

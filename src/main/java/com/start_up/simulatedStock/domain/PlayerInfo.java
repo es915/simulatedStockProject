@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 public class PlayerInfo extends BaseTime{
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "player_info_id")
     private Long id;
 

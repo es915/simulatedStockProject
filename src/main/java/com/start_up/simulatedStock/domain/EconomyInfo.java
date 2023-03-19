@@ -13,8 +13,7 @@ import javax.persistence.*;
 public class EconomyInfo extends BaseTime {
 
     // 종목별 인포메이션
-
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "economy_info_id")
     private Long id;
 
@@ -27,4 +26,14 @@ public class EconomyInfo extends BaseTime {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="stock_id")
     private Stock stock; // 연결된 종목
+
+    public EconomyInfo createInfos(String description, EconomyInfoState economyInfoState, Stock stock) {
+        return new EconomyInfo(description, economyInfoState, stock);
+    }
+
+    private EconomyInfo(String description, EconomyInfoState economyInfoState, Stock stock) {
+        this.description = description;
+        this.economyInfoState = economyInfoState;
+        this.stock = stock;
+    }
 }
