@@ -27,13 +27,7 @@ public class EconomyInfo extends BaseTime {
     @JoinColumn(name="stock_id")
     private Stock stock; // 연결된 종목
 
-    public EconomyInfo createInfos(String description, EconomyInfoState economyInfoState, Stock stock) {
-        return new EconomyInfo(description, economyInfoState, stock);
-    }
-
-    private EconomyInfo(String description, EconomyInfoState economyInfoState, Stock stock) {
-        this.description = description;
-        this.economyInfoState = economyInfoState;
+    public void setStock(Stock stock) {
         this.stock = stock;
     }
 }

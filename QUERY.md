@@ -1,7 +1,7 @@
 INSERT INTO	stock(stock_name)
-VALUES ('A엔터');
+VALUES ('A 엔터');
 INSERT INTO	stock(stock_name)
-VALUES ('B엔터');
+VALUES ('B 엔터');
 INSERT INTO	stock(stock_name)
 VALUES ('C IT');
 INSERT INTO	stock(stock_name)
@@ -20,7 +20,7 @@ INSERT INTO	stock(stock_name)
 VALUES ('J 조선');
 
 INSERT INTO economy_info(`description`, economy_info_state, stock_id)   
-VALUES ('A엔터 소속 연예인 갑질 논란', 1, economy_info, (SELECT stock_id FROM stock WHERE stock_name='A 엔터'));
+VALUES ('A엔터 소속 연예인 갑질 논란', 1, (SELECT stock_id FROM stock WHERE stock_name='A 엔터'));
 INSERT INTO economy_info(`description`, economy_info_state, stock_id)   
 VALUES ('A엔터 소속 연예인의 학교 폭력 논란', 0, (SELECT stock_id FROM stock WHERE stock_name='A 엔터'));
 INSERT INTO economy_info(`description`, economy_info_state, stock_id)   
@@ -167,7 +167,7 @@ INSERT INTO economy_info(`description`, economy_info_state, stock_id)
 VALUES ('미국 친환경 정책으로 국내 화학 업계 호황', 1, (SELECT stock_id FROM stock WHERE stock_name='I 화학'));
 INSERT INTO economy_info(`description`, economy_info_state, stock_id)   
 VALUES ('정부가 미세먼지 대책 사업으로 공기정화장치 구매 지원금 지급 정책 실시', 1, (SELECT stock_id FROM stock WHERE stock_name='I 화학'));
-INSERT INTO economy_info(economy_info_id, `description`, economy_info_state, stock_id)   
+INSERT INTO economy_info(`description`, economy_info_state, stock_id)   
 VALUES ('태양광 기술 해외 수출 계약 확정', 1, (SELECT stock_id FROM stock WHERE stock_name='I 화학'));
 
 INSERT INTO economy_info(`description`, economy_info_state, stock_id)   
