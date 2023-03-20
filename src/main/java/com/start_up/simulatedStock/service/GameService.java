@@ -28,6 +28,9 @@ public class GameService {
             player.setPlayerInfo(playerInfo);
         }
 
+
+
+
     }
 
     private Room findRoom(Long id) {
