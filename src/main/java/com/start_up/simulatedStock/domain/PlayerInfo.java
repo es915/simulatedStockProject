@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 public class PlayerInfo extends BaseTime{
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "player_info_id")
     private Long id;
 
@@ -23,11 +23,11 @@ public class PlayerInfo extends BaseTime{
     @Column(nullable = false)
     private float profitRate; // 손익률
 
-    @OneToMany(mappedBy = "playerInfo")
-    private List<PlayerStock> playerStockList = new ArrayList<>(); // 보유 주식 리스트
-
     @OneToOne(mappedBy = "playerInfo", fetch = FetchType.LAZY)
     private Player player; // 이 정보의 플레이어
+
+    @OneToMany(mappedBy = "playerInfo")
+    private List<PlayerStock> playerStockList = new ArrayList<>(); // 보유 주식 리스트
 
     public static PlayerInfo createPlayerInfo(Player player) {
         return new PlayerInfo(player);

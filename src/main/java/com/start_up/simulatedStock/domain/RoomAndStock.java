@@ -10,22 +10,21 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class StockDetail extends BaseTime {
+public class RoomAndStock {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "stock_detail_id")
+    @Column(name = "room_and_stock_id")
     private Long id;
 
-    @Column(nullable = false)
-    private int roundNumber;
-
-    @Column(nullable = false)
-    private int price;
-
-    @Column(nullable = false)
-    private int upDown;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "room_id")
+    private Room room;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="stock_id")
+    @JoinColumn(name = "stock_id")
     private Stock stock;
+
+
+
 }

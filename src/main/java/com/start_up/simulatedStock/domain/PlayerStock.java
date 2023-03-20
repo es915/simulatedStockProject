@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 public class PlayerStock extends BaseTime{
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "player_stock_id")
     private Long id;
 
@@ -30,9 +30,12 @@ public class PlayerStock extends BaseTime{
     private Stock stock; // 주식 종목
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="player_id")
+    private Player player;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="player_info_id")
     private PlayerInfo playerInfo; // 주식을 가지고 있는 플레이어
 
-    @OneToMany(mappedBy = "playerStock") // PlayerStock - Stock 사이 다대다 풀이
-    private List<StockAndPlayerStock> stockAndPlayerStockList = new ArrayList<>(); // 다대다 중간 리스트
+
 }

@@ -3,16 +3,20 @@ package com.start_up.simulatedStock.domain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Setter
 public class Player extends BaseTime{
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "player_id")
     private Long id;
 
@@ -29,6 +33,9 @@ public class Player extends BaseTime{
     @OneToOne
     @JoinColumn(name = "player_info_id")
     private PlayerInfo playerInfo; // 유저의 정보 - 자산가치, 보유 주식, 손익률
+
+    @OneToMany(mappedBy = "player")
+    private List<PlayerStock> playerStocks = new ArrayList<>();
 
 
     // 편의 메소드

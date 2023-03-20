@@ -11,7 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 public class Room extends BaseTime {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "room_id")
     private Long id;
 
@@ -29,6 +29,9 @@ public class Room extends BaseTime {
 
     @OneToMany(mappedBy = "room")
     private List<Player> playerList = new ArrayList<>(); // 게임방의 참여자
+
+    @OneToMany(mappedBy = "room")
+    private List<RoomAndStock> roomAndStocks = new ArrayList<>();
 
     // 생성 메서드
     public static Room createRoom(String secretCode) {
