@@ -27,10 +27,6 @@ public class GameService {
             PlayerInfo playerInfo = PlayerInfo.createPlayerInfo(player); //
             player.setPlayerInfo(playerInfo);
         }
-
-
-
-
     }
 
     private Room findRoom(Long id) {
