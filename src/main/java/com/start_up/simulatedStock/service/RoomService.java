@@ -23,9 +23,20 @@ public class RoomService {
 
     // 룸 생성
     @Transactional
-    public void createGame() {
+    public Long createGame(Player player) { // 호스트인 플레이어만 생성 가능
         String secretCode = getRandomPassword(6); // 비밀번호 자동 생성
-        roomRepository.save(Room.createRoom(secretCode)); // 룸 생성
+        Room room = Room.createRoom(secretCode);
+        player.setRoom(room); // 편의 메소드로 player 와 room 을 한번에 엮음
+        roomRepository.save(room); // 룸 생성
+        return room.getId();
+    }
+
+    // 룸 참여하기
+    @Transactional
+    public void enterRoom(Player player, String code) { // 참가자인 플레이어는 비밀번호를 입력하고
+        Room room = findBySecretCode(code); // 입력된 비밀번호와 일치한 게임방을 찾아 입장
+        player.setRoom(room); // 편의 메소드로 player 와 room 을 한번에 엮음
+        roomRepository.save(room); // 업데이트
     }
 
     // 룸 삭제
@@ -69,7 +80,7 @@ public class RoomService {
         return secretCode;
     }
 
-    // 게임방 찾는 메소드
+    // 게임방 찾는 메소드 Id로 찾기
     private Room findRoom(Long id) {
         Optional<Room> room = roomRepository.findById(id);
         if(room.isPresent()) {
@@ -79,5 +90,14 @@ public class RoomService {
         }
     }
 
+    // 게임방 찾는 메소드 비밀번호로 찾기
+    private Room findBySecretCode(String secretCode) {
+        Optional<Room> room = roomRepository.findBySecretCode(secretCode);
+        if(room.isPresent()) {
+            return room.get();
+        } else {
+            throw new IllegalStateException("게임방이 존재하지 않음.");
+        }
+    }
 
 }
