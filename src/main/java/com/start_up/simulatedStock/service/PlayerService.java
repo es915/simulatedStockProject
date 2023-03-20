@@ -35,6 +35,7 @@ public class PlayerService {
                 .ifPresent(m ->{
                     throw new IllegalStateException("이미 존재하는 회원입니다.");
                 });
+        // findByName도 가능하지만 동명이인 생각
     }
 
 
