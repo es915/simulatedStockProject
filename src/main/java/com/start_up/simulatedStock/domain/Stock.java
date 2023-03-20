@@ -21,6 +21,9 @@ public class Stock extends BaseTime {
     private String stockName; // 종목 이름
 
     @OneToMany(mappedBy = "stock")
+    private List<RoomAndStock> roomAndStocks = new ArrayList<>();
+
+    @OneToMany(mappedBy = "stock")
     private List<StockDetail> stockDetails = new ArrayList<>(); // 종목의 라운드 별 주식정보
 
     @OneToMany(mappedBy = "stock")

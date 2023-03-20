@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -32,7 +33,7 @@ public class Player extends BaseTime{
     private PlayerInfo playerInfo; // 유저의 정보 - 자산가치, 보유 주식, 손익률
 
     @OneToMany(mappedBy = "player")
-    private List<PlayerStock> playerStocks;
+    private List<PlayerStock> playerStocks = new ArrayList<>();
 
 
     // 편의 메소드
