@@ -28,6 +28,12 @@ public class RoomService {
         roomRepository.save(Room.createRoom(secretCode)); // 룸 생성
     }
 
+    // 룸 참여
+    @Transactional
+    public void enterGame() {
+
+    }
+
     // 룸 삭제
     @Transactional
     public void deleteGame(Long id) {

@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@Setter
+@Setter // 엔티티에선 세터 금지
 public class Player extends BaseTime{
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
