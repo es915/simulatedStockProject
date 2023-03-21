@@ -37,6 +37,7 @@ public class Player extends BaseTime{
     @OneToMany(mappedBy = "player")
     private List<PlayerStock> playerStocks = new ArrayList<>();
 
+<<<<<<< HEAD
     public static Player createPlayerFromDto(PlayerDto playerDto) {
         Player player = new Player();
         player.playerName = playerDto.getPlayerName();
@@ -44,6 +45,13 @@ public class Player extends BaseTime{
         return player;
     }
 
+=======
+    // 편의 메소드
+    public void setRoom(Room room) {
+        this.room = room;
+        room.getPlayerList().add(this);
+    }
+>>>>>>> e9c429f24666dd21cbf3900c4ca4ccfc77f5f84c
 
     // 편의 메소드
     public void setPlayerInfo(PlayerInfo playerInfo) {
