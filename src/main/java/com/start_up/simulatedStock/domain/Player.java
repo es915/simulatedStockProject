@@ -1,5 +1,6 @@
 package com.start_up.simulatedStock.domain;
 
+import com.start_up.simulatedStock.dto.PlayerDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@Setter // 엔티티에선 세터 금지
 public class Player extends BaseTime{
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,6 +36,13 @@ public class Player extends BaseTime{
 
     @OneToMany(mappedBy = "player")
     private List<PlayerStock> playerStocks = new ArrayList<>();
+
+    public static Player createPlayerFromDto(PlayerDto playerDto) {
+        Player player = new Player();
+        player.playerName = playerDto.getPlayerName();
+        player.playerState = playerDto.getPlayerState();
+        return player;
+    }
 
 
     // 편의 메소드
