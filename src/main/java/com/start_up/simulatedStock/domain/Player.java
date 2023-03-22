@@ -46,7 +46,4 @@ public class Player extends BaseTime{
         this.playerInfo = playerInfo;
     }
 
-//    public void setPlayerStock(PlayerStock playerStock) {
-//        this.playerStock =
-//    }
 }
