@@ -24,11 +24,11 @@ public class Player extends BaseTime{
     @Column(nullable = false)
     private PlayerState playerState; // host or participate
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="room_id")
     private Room room; // 참여하고 있는 게임방
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "player_info_id")
     private PlayerInfo playerInfo; // 유저의 정보 - 자산가치, 보유 주식, 손익률
 

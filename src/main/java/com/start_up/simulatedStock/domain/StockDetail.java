@@ -28,4 +28,15 @@ public class StockDetail extends BaseTime {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="stock_id")
     private Stock stock;
+
+    public static StockDetail createStockDetail(Stock stock, int roundNumber, int price, int upDown) {
+        return new StockDetail(stock, roundNumber, price, upDown);
+    }
+
+    private StockDetail(Stock stock, int roundNumber, int price, int upDown) {
+        this.stock = stock;
+        this.roundNumber = roundNumber;
+        this.price = price;
+        this.upDown = upDown;
+    }
 }

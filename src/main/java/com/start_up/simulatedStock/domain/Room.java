@@ -31,7 +31,7 @@ public class Room extends BaseTime {
     private List<Player> playerList = new ArrayList<>(); // 게임방의 참여자
 
     @OneToMany(mappedBy = "room")
-    private List<RoomAndStock> roomAndStocks = new ArrayList<>();
+    private List<Stock> stocks = new ArrayList<>();
 
     // 생성 메서드
     public static Room createRoom(String secretCode) {
