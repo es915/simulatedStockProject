@@ -1,15 +1,14 @@
 package com.start_up.simulatedStock.service;
 
-import com.start_up.simulatedStock.domain.Player;
-import com.start_up.simulatedStock.domain.PlayerInfo;
-import com.start_up.simulatedStock.domain.PlayerStock;
-import com.start_up.simulatedStock.domain.Room;
+import com.start_up.simulatedStock.domain.*;
 import com.start_up.simulatedStock.repository.PlayerRepository;
 import com.start_up.simulatedStock.repository.RoomRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,16 +18,14 @@ public class GameService {
 
     private final RoomRepository roomRepository;
     private final PlayerRepository playerRepository;
-    private final StockRepository stockRepository;
 
     // 게임 시작 버튼 클릭시 호출되는 함수
+    // 게임 시작시 유저들 각 인포, 각 주식 생김, 공유 주식판 생성
     public void gameStart(Long id) {
         Room room = findRoom(id); // 게임방 아이디
-        List<Stock> = stockRepository.findAll().get();
 
         for (Player player : room.getPlayerList()) { // 그 게임방에 속한 유저 한명씩 차례로 뽑고
-            PlayerInfo playerInfo = PlayerInfo.createPlayerInfo(player);
-//            PlayerStock playerStock = PlayerStock.createPlayerStock(player);
+            PlayerInfo playerInfo = PlayerInfo.createPlayerInfo(player); // 각 유저 인포 생성
         }
     }
 
