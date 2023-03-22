@@ -46,6 +46,9 @@ public class Player extends BaseTime{
     // 편의 메소드
     public void setPlayerInfo(PlayerInfo playerInfo) {
         this.playerInfo = playerInfo;
-        playerInfo.setPlayer(this);
     }
+
+//    public void setPlayerStock(PlayerStock playerStock) {
+//        this.playerStock =
+//    }
 }
