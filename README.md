@@ -27,9 +27,6 @@
 - StockDetail : 주식 종목 세부 사항
 - EconomyInfo : 종목별 정보
 
-## Entity 연관관계
-
-
 # Enum
 - PlayerState : Host or Participate
 - EconomyInfoState : 호재 or 악재
