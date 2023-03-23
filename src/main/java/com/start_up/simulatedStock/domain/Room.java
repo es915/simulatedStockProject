@@ -49,12 +49,24 @@ public class Room extends BaseTime {
     // 옵션 변경
     public void changeOption(char optionType, int operator) {
         if (operator == 1 || operator == -1) {
-            if (optionType == 't') {
-                this.timeLimit += operator*30;
-            } else if(optionType == 'r') {
-                this.roundNumber += operator;
-            } else if (optionType == 's') {
-                this.seedMoney += operator*500000;
+            if (optionType == 't') { // 최대 5분, 최소 1분
+                if (this.timeLimit+operator*30 > 300 || this.timeLimit+operator*30 < 60 ) {
+                    throw new IllegalStateException("최솟값 또는 최댓값을 넘어서는 값입니다.");
+                } else {
+                    this.timeLimit += operator*30;
+                }
+            } else if(optionType == 'r') { // 최대 15라운드, 최소 5라운드
+                if (this.roundNumber+operator*1 > 15 || this.roundNumber+operator*1 < 5 ) {
+                    throw new IllegalStateException("최솟값 또는 최댓값을 넘어서는 값입니다.");
+                } else {
+                    this.roundNumber += operator*1;
+                }
+            } else if (optionType == 's') { // 최대 500만원, 최소 50만원
+                if (this.seedMoney+operator*500000 > 5000000 || this.seedMoney+operator*500000 < 500000 ) {
+                    throw new IllegalStateException("최솟값 또는 최댓값을 넘어서는 값입니다.");
+                } else {
+                    this.seedMoney += operator*500000;
+                }
             } else {
                 throw new IllegalStateException("optionType 이 잘못 입력되었습니다.");
             }
