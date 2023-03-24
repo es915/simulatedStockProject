@@ -21,6 +21,7 @@ public class Stock extends BaseTime {
     private String stockName; // 종목 이름
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "room_id")
     private Room room;
 
     @OneToMany(mappedBy = "stock")

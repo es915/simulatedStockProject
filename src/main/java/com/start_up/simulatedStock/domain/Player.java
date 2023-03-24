@@ -1,5 +1,6 @@
 package com.start_up.simulatedStock.domain;
 
+import com.start_up.simulatedStock.dto.PlayerDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,6 +37,21 @@ public class Player extends BaseTime{
 
     @OneToMany(mappedBy = "player")
     private List<PlayerStock> playerStocks = new ArrayList<>();
+
+    public static Player createPlayer(PlayerDto playerDto) {
+        return new Player(
+                playerDto.getId(),
+                playerDto.getPlayerName(),
+                playerDto.getPlayerState()
+        );
+    }
+
+    private Player(Long id, String name, PlayerState playerState) {
+        this.id = id;
+        this.playerName = name;
+        this.playerState = playerState;
+    }
+
 
     // 편의 메소드
     public void setRoom(Room room) {

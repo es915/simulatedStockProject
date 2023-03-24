@@ -20,8 +20,9 @@ public class GameService {
 
     // 게임 시작 버튼 클릭시 호출되는 함수
     // 게임 시작시 유저들 각 인포, 각 주식 생김, 공유 주식판 생성
-    public void gameStart(Long id) {
-        Room room = findRoom(id); // 게임방 아이디
+    @Transactional
+    public void gameStart(Long gameId) {
+        Room room = findRoom(gameId); // 게임방 아이디
 
         // 게임방에 맞는 스톡 생성
         for (KindOfStock stocks : KindOfStock.values()) {
@@ -32,9 +33,17 @@ public class GameService {
         }
 
         for (Player player : room.getPlayerList()) { // 그 게임방에 속한 유저 한명씩 차례로 뽑고
-            PlayerInfo playerInfo = PlayerInfo.createPlayerInfo(player); // 각 유저 인포 생성
+            PlayerInfo playerInfo = PlayerInfo.createPlayerInfo(player, room.getSeedMoney()); // 각 유저 인포 생성
             playerInfoRepository.save(playerInfo);
         }
+    }
+
+
+    // 다음 라운드로 넘어가기
+    @Transactional
+    public void nextRound(Long gameId) {
+        Room room = findRoom(gameId); // 게임방 아이디
+
     }
 
     private Room findRoom(Long id) {
