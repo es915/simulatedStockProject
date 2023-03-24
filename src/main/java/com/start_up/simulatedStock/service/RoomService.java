@@ -50,7 +50,7 @@ public class RoomService {
         Room room = findRoom(id);
         List<PlayerDto> playerDtoList = new ArrayList<>();
         for (Player player : room.getPlayerList()) {
-            playerDtoList.add(PlayerDto.toBoardDTO(player));
+            playerDtoList.add(PlayerDto.toPlayerDTO(player));
         }
         return playerDtoList;
     }
