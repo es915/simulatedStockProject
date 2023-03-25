@@ -21,7 +21,7 @@ public class PlayerDto {
     private PlayerState playerState; // host or participate
 
     // Entity -> Dto 변경
-    public static PlayerDto toBoardDTO(Player player) {
+    public static PlayerDto toPlayerDTO(Player player) {
         return new PlayerDto(
                 player.getId(),
                 player.getPlayerName(),

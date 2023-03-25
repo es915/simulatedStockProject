@@ -1,9 +1,7 @@
 package com.start_up.simulatedStock.service;
 
 import com.start_up.simulatedStock.domain.Player;
-import com.start_up.simulatedStock.domain.PlayerInfo;
 import com.start_up.simulatedStock.domain.PlayerState;
-import com.start_up.simulatedStock.domain.Room;
 import com.start_up.simulatedStock.dto.PlayerDto;
 import com.start_up.simulatedStock.repository.PlayerRepository;
 import com.start_up.simulatedStock.repository.RoomRepository;
@@ -25,9 +23,9 @@ public class PlayerService {
     // PlayerDto로 정보를 받아오기에 따로 변수를 받을 필요 없이 PlayerDto를 인자로 받고 get으로 가져오면 편함,
     // Optional<String> password 인자를 넣어 비밀번호를 받음
     @Transactional
-    public void join(PlayerDto playerInfo, Optional<String> password) {
+    public void join(PlayerDto playerDto, Optional<String> password) {
         // 서비스에서 객체 생성 안좋음 -> 엔티티에서 생성메소드를 만들어 그걸 가지고 한번에 조립
-        Player player = Player.createPlayerFromDto(playerInfo);
+        Player player = Player.createPlayer(playerDto);
 
         // 중복체크 좋아용, 하지만 한 게임방안에서 중복은 불가, 다른 게임방은 중복 가능하죠
         // 중복체크 보류
@@ -40,7 +38,8 @@ public class PlayerService {
         // 참가자일 경우 옵셔널 비밀번호와 같은 비밀번호를 가진 게임방 찾고 입장
         else if(player.getPlayerState() == PlayerState.PARTICIPATE){
             if(!password.isEmpty()){
-                Optional<Room> room = roomRepository.findBySecretCode(String.valueOf(password));
+                
+                //Optional<Room> room = roomRepository.findBySecretCode(String.valueOf(password));
 
             }
         }

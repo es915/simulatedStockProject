@@ -29,17 +29,15 @@ public class PlayerInfo extends BaseTime{
     @OneToMany(mappedBy = "playerInfo")
     private List<PlayerStock> playerStockList = new ArrayList<>(); // 보유 주식 리스트
 
-    public static PlayerInfo createPlayerInfo(Player player) {
-        return new PlayerInfo(player);
+    public static PlayerInfo createPlayerInfo(Player player, int seedMoney) {
+        return new PlayerInfo(player, seedMoney);
     }
 
-    // 생성자
-    private PlayerInfo(Player player) {
+    // 생성자 + 편의 메소드
+    private PlayerInfo(Player player, int seedMoney) {
+        this.seedMoney = seedMoney;
+        this.profitRate = 0F;
         this.player = player;
-    }
-
-    // 편의 메소드를 위한 세터문
-    public void setPlayer(Player player) {
-        this.player = player;
+        player.setPlayerInfo(this);
     }
 }

@@ -38,4 +38,13 @@ public class PlayerStock extends BaseTime{
     private PlayerInfo playerInfo; // 주식을 가지고 있는 플레이어
 
 
+    public static PlayerStock createPlayerStock(Player player) {
+        return new PlayerStock(player);
+    }
+
+    // 생성자 + 편의 메소드
+    private PlayerStock(Player player) {
+        this.player = player;
+        player.getPlayerStocks().add(this);
+    }
 }
