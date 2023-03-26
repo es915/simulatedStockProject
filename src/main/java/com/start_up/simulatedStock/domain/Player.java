@@ -4,7 +4,6 @@ import com.start_up.simulatedStock.dto.PlayerDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -14,7 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@Setter // 엔티티에선 세터 금지
 public class Player extends BaseTime{
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,12 +50,12 @@ public class Player extends BaseTime{
         this.playerState = playerState;
     }
 
-
     // 편의 메소드
     public void setRoom(Room room) {
         this.room = room;
         room.getPlayerList().add(this);
     }
+
 
     // 편의 메소드
     public void setPlayerInfo(PlayerInfo playerInfo) {
